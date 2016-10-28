@@ -3,7 +3,7 @@ A prolog example to determine who needs to die before somebody can become king.
 
 ## Use
 Use the [online prolog intepreter] (http://swish.swi-prolog.org/) for your queries.
-Just copy the content of the (becomeKing script)[becomeKing.prolog] into the editor.
+Just copy the content of the [becomeKing Prolog script](becomeKing.prolog) into the editor.
 
 To find out how Robbert becomes king use this query:
 ~~~prolog
