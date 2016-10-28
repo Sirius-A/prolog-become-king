@@ -18,6 +18,8 @@ female(fiona).
 female(mary).
 female(ana).
 
+female(peter).
+
 % Martin's kids
 child(john,martin).
 child(fiona,martin).
@@ -29,6 +31,8 @@ child(tim,john).
 
 child(nick,fiona).
 child(ana,fiona).
+
+child(peter,ana).
 
 child(tom,robbert).
 
@@ -55,11 +59,11 @@ becomeKing(NewKing,PeopleToDie) :- child(NewKing,PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- child(NewKing,Parents),elderBrothers(Parents, PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- ancestors(NewKing,PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- ancestors(NewKing,Ancestors),elderBrothers(Ancestors,PeopleToDie).
+becomeKing(NewKing,PeopleToDie) :- ancestors(NewKing,Ancestors),elderBrothers(Ancestors,AncestorelderBrothers),sons(AncestorelderBrothers,PeopleToDie).
 
 becomeKing(NewKing,PeopleToDie) :- male(NewKing),child(NewKing,PeopleToDie),king(PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- male(NewKing),child(Father,King),king(King),child(NewKing,Father),brothers(Father,PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- male(NewKing),child(PeopleToDie,King),king(King),child(NewKing,PeopleToDie).
-becomeKing(NewKing,PeopleToDie) :- ancestors(NewKing,Ancestors),elderBrothers(Ancestors,AncestorelderBrothers),sons(AncestorelderBrothers,PeopleToDie).
 
 becomeKing(NewKing,PeopleToDie) :- female(NewKing),brothers(NewKing,PeopleToDie).
 becomeKing(NewKing,PeopleToDie) :- female(NewKing),child(NewKing,PeopleToDie),king(PeopleToDie);(female(NewKing),brothers(NewKing,PeopleToDie),child(NewKing,martin)).
